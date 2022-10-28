@@ -27,6 +27,8 @@ def print_maps(maps):
         if i%3 == 0:
             print('\n')
 
+# запись хода в выбранную ячейку
+
 def input_step(whose_move, igrok_1, igrok_2, maps):
     # print_maps(maps)
     if whose_move:
@@ -53,6 +55,8 @@ def input_step(whose_move, igrok_1, igrok_2, maps):
     # print(hod_a)
     return hod_a
 
+# проверка условия оканчания игры
+
 def win_xo():
     win = ""
     for i in winer_xo:
@@ -69,10 +73,6 @@ whose_move = bool(random.getrandbits(1))
 
 maps=[i for i in range(1, 10)]
 igra_go = True
-
-# input_step(whose_move,igrok_1,igrok_2,maps)
-# print_maps(maps)
-
 
 while(igra_go):
     os.system('cls')
