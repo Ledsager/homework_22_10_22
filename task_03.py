@@ -63,8 +63,8 @@ def win_xo():
     return win
     
 os.system('cls')
-igrok_1 = 'igrok 1'
-igrok_2 = 'igrok 2'
+igrok_1 = 'igrok 1' # можно организовать выбор имени игрока
+igrok_2 = 'igrok 2' # можно организовать выбор имени игрока
 whose_move = bool(random.getrandbits(1))
 
 maps=[i for i in range(1, 10)]

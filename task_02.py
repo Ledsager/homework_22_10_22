@@ -14,7 +14,7 @@
 import random
 
 
-def input_number(whose_move,igrok_1,igrok_2):
+def input_number(whose_move, igrok_1, igrok_2, kol_konfet, max_hod):
     if whose_move:
         print(f'ходит {igrok_1}')
     else:
@@ -24,12 +24,18 @@ def input_number(whose_move,igrok_1,igrok_2):
     while True:
         try:
             if not(whose_move) and igrok_2 == 'bot':
-                hod_a=random.randint(0,28)
+                if kol_konfet//max_hod > 3: # бот начинает просчитывать количество конфет для победы
+                    hod_a=random.randint(1,28)
+                else:
+                    hod_a = kol_konfet % (max_hod+1)
+                    if hod_a == 0:
+                        hod_a += 1
+                # hod_a=random.randint(0,28)
                 print('bot забрал ',hod_a, ' конф.')
                 return hod_a
                 
             hod_a=int(input("Введите количество конфет которые забираете : "))
-            if (hod_a < 1) or (hod_a > 28):
+            if (hod_a < 1) or (hod_a > max_hod):
                 print('количество конфет должно быть больше 0 и меньше 28, введите еще раз:')
             else:
                 break
@@ -42,7 +48,8 @@ def input_number(whose_move,igrok_1,igrok_2):
 # igrok_1-true
 # igrok_2-false
 
-kol_konfet = 60
+kol_konfet = 190
+max_hod = 28
 bot = int(input('Введите количество игроков (1 или 2): '))
 if bot == 2:
     igrok_1 = 'igrok 1'
@@ -57,8 +64,8 @@ whose_move = bool(random.getrandbits(1))
 # print(whose_move)
 
 while(kol_konfet > 0):
-    if kol_konfet >= 29:
-        kol_konfet = kol_konfet - input_number(whose_move,igrok_1,igrok_2)
+    if kol_konfet >= (max_hod + 1):
+        kol_konfet = kol_konfet - input_number(whose_move, igrok_1, igrok_2, kol_konfet, max_hod)
         print(kol_konfet,' конф. осталось')
         whose_move = not(whose_move)
     else:
