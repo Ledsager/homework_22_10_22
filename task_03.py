@@ -36,7 +36,8 @@ def input_step(whose_move, igrok_1, igrok_2, maps):
     else:
         print(f'ходит {igrok_2}')
     while True:
-        try:       
+        try:
+            # сделать условие проверки ничьей
             hod_a = int(input("Введите ячейку : "))
             ind = maps.index(hod_a)
             # print(maps.index(hod_a),' ',maps[ind])
